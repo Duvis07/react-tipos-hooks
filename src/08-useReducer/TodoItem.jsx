@@ -1,6 +1,9 @@
 import React from "react";
 
+///se recibe el todo, la funcion para eliminar y la funcion para cambiar el estado
 export const TodoItem = ({ todo, onDeleteTodo, onToggleTodo }) => {
+  //se renderiza el componente TodoItem y se ejecuta la funcion onToggleTodo
+  // a partir de esta se tacha el todo y se cambia el estado
   return (
     <li className="list-group-item d-flex justify-content-between">
       <span

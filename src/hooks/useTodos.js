@@ -1,6 +1,7 @@
 import { useEffect, useReducer } from "react";
 import { todoReducer } from "../08-useReducer/todoReducer";
 
+//se inicializa el estado con los datos del local storage si es nulo se retorna un arreglo vacio
 const init = () => {
   return JSON.parse(localStorage.getItem("todos")) || [];
 };
@@ -8,6 +9,7 @@ const init = () => {
 export const useTodos = () => {
   const [todos, dispatch] = useReducer(todoReducer, [], init);
 
+  //se guarda en el local storage cada vez que se modifica el estado
   useEffect(() => {
     localStorage.setItem("todos", JSON.stringify(todos));
   }, [todos]);
@@ -21,6 +23,7 @@ export const useTodos = () => {
     dispatch(action);
   };
 
+  //se envia el id del todo que se quiere eliminar al reducer
   const handleDeleteTodo = (id) => {
     const action = {
       type: "delete",

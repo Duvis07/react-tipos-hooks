@@ -21,12 +21,13 @@ export const TodoApp = () => {
     handleNewTodo,
   } = useTodos();
 
+  //se renderiza el componente todoApp
   return (
     <>
       <h1>
-        <h1>
-          TodoApp: {todosCount}, <small>pendientes: {pendingTodosCount}</small>{" "}
-        </h1>
+        <h2>
+          TodoApp: {todosCount}, <small>Pendientes: {pendingTodosCount}</small>{" "}
+        </h2>
       </h1>
 
       <hr />
