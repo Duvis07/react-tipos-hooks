@@ -7,6 +7,7 @@ import { Navbar } from "./Navbar";
 import { UserProvider } from "./context/UserProvider";
 
 export const MainApp = () => {
+  //las routes va recibir una lista de rutas
   return (
     <UserProvider>
       <Navbar />
