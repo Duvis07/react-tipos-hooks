@@ -3,8 +3,12 @@ import { useCounter } from "../../hooks/useCounter";
 
 describe("Pruebas en el useCounter", () => {
   test("Debe de retornar valores por defecto", () => {
+    //renderizar el hook y obtener el resultado
+    //el renderHook nos permite renderizar un hook
     const { result } = renderHook(() => useCounter());
 
+
+    //en el initial state del useCounter, el counter es 10
     expect(result.current.counter).toBe(10);
     expect(typeof result.current.increment).toBe("function");
     expect(typeof result.current.decrement).toBe("function");
@@ -21,10 +25,12 @@ describe("Pruebas en el useCounter", () => {
     const { result } = renderHook(() => useCounter(100));
     const { counter, increment } = result.current;
 
+    //act nos permite ejecutar una accion
     act(() => {
       increment();
     });
 
+    //se toma el valor del counter actual
     expect(result.current.counter).toBe(101);
   });
 

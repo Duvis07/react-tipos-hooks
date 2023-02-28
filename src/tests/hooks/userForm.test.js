@@ -19,7 +19,9 @@ describe("Pruebas en el useForm", () => {
   });
 
   test("Debe de cambiar el valor del formulario (cambiar name)", () => {
+    //Montar el hook
     const { result } = renderHook(() => useForm(initialForm));
+    //llamar la funcion onInputChange
     const { onInputChange } = result.current;
     const event = {
       target: {
@@ -27,6 +29,7 @@ describe("Pruebas en el useForm", () => {
         value: "Melissa",
       },
     };
+    //ejecutar la funcion onInputChange
     act(() => {
       onInputChange(event);
     });

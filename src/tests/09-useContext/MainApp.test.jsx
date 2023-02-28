@@ -4,6 +4,7 @@ import { MainApp } from "../../09-useContext/MainApp";
 
 describe("pruebas en el MainApp", () => {
   test("debe de mostrar el homePage", () => {
+    //EL MEMORY ROUTER ES UNA FORMA DE SIMULAR EL ROUTER EN LOS TESTS
     render(
       <MemoryRouter>
         <MainApp />

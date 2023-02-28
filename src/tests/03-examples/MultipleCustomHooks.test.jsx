@@ -3,20 +3,23 @@ import { MultipleCustomHooks } from "../../03-examples";
 import { useCounter } from "../../hooks";
 import { useFetch } from "../../hooks";
 
+// Mocks
 jest.mock("../../hooks/useFetch");
 jest.mock("../../hooks/useCounter");
 
 describe("Pruebas multipleCustom", () => {
   const increment = jest.fn();
 
+  //Mockeamos el useCounter las utilizamos en el componente MultipleCustomHooks
   useCounter.mockReturnValue({
     counter: 1,
     increment,
   });
 
+  //Antes de cada prueba limpiamos los mocks y reseteamos los valores
   beforeEach(() => {
     jest.clearAllMocks();
-    });
+  });
 
   test("Debe de retornar el componente por defecto", () => {
     useFetch.mockReturnValue({
@@ -45,6 +48,7 @@ describe("Pruebas multipleCustom", () => {
     });
 
     render(<MultipleCustomHooks />);
+    //El toBeTruthy es para que no sea null y que exista
     expect(screen.getByText("Hola Mundo")).toBeTruthy();
     expect(screen.getByText("Fernando")).toBeTruthy();
 
@@ -62,8 +66,10 @@ describe("Pruebas multipleCustom", () => {
     render(<MultipleCustomHooks />);
 
     const nextButton = screen.getByRole("button", { name: "Next quote" });
+    //Simulamos el click del boton nextButton
     fireEvent.click(nextButton);
 
+    //Verificamos que se haya llamado la funcion increment
     expect(increment).toHaveBeenCalled();
   });
 });
